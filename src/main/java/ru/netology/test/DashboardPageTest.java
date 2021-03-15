@@ -17,7 +17,7 @@ public class DashboardPageTest {
 
     @BeforeAll
     static void setUp() {
-        Configuration.browser = "firefox";
+//        Configuration.browser = "opera";
         Configuration.startMaximized = true;
     }
 

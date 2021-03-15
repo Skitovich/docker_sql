@@ -44,7 +44,7 @@ public class SqlMethods {
 
         try (
                 val conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/DB_URL", "DB_USER", "DB_PASS")
+                        "jdbc:mysql://localhost:3306/app", "app", "pass")
         ) {
             val code = runner.query(conn, getCode, new ScalarHandler<>());
             return new CodeInfo(code.toString());
