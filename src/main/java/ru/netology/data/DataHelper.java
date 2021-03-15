@@ -1,6 +1,7 @@
 package ru.netology.data;
 
 import lombok.Value;
+import ru.netology.sql.SqlMethods;
 
 public class DataHelper {
     private DataHelper() {
@@ -14,8 +15,8 @@ public class DataHelper {
         return new AuthInfo("petya", "123qwerty");
     }
 
-    public static VerificationCode getVerificationCodeFor(AuthInfo authInfo) {
-        return new VerificationCode("12345");
+    public static SqlMethods.CodeInfo getVerificationCodeFor() {
+        return SqlMethods.getCode();
     }
 
     @Value
