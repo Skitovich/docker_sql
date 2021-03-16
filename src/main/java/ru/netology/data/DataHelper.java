@@ -15,9 +15,7 @@ public class DataHelper {
         return new AuthInfo("petya", "123qwerty");
     }
 
-    public static SqlMethods.CodeInfo getVerificationCodeFor() {
-        return SqlMethods.getCode();
-    }
+
 
     @Value
     public static class AuthInfo {

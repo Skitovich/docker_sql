@@ -17,7 +17,9 @@ public class DashboardPageTest {
 
     @BeforeAll
     static void setUp() {
-//        Configuration.browser = "opera";
+
+        Configuration.browser = "firefox";
+        SqlMethods.clearTables();
         Configuration.startMaximized = true;
     }
 
@@ -32,12 +34,12 @@ public class DashboardPageTest {
     }
 
     @Test
-    void shouldSuccessfulLoginToDashboard() {
+    public void shouldSuccessfulLoginToDashboard() {
         val loginPage = new LoginPage();
         val authInfo = DataHelper.getAuthInfo();
-        val vericationPage = loginPage.validLogin(authInfo);
-        val vericationCode = DataHelper.getVerificationCodeFor();
-        val dashboardPage = vericationPage.validVerify(vericationCode);
+        val verificationPage = loginPage.validLogin(authInfo);
+        val verificationCode = SqlMethods.getCode();
+        val dashboardPage = verificationPage.validVerify(verificationCode);
         dashboardPage.DashboardPageCheck();
     }
 
