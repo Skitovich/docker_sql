@@ -15,7 +15,7 @@ public class VerificationPage {
         codeField.shouldBe(visible);
     }
 
-    public DashboardPage validVerify(SqlMethods.CodeInfo verificationCode) {
+    public DashboardPage validVerify (SqlMethods.CodeInfo verificationCode) {
         codeField.setValue(verificationCode.getCode());
         verifyButton.click();
         return new DashboardPage();

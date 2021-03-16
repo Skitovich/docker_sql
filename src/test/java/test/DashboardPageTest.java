@@ -1,4 +1,4 @@
-package ru.netology.test;
+package test;
 
 import com.codeborne.selenide.Configuration;
 import lombok.val;
@@ -15,32 +15,32 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class DashboardPageTest {
 
-    @BeforeAll
-    static void setUp() {
-
-        Configuration.browser = "firefox";
-        SqlMethods.clearTables();
-        Configuration.startMaximized = true;
-    }
-
     @BeforeEach
     void openSetUp() {
         open("http://localhost:9999");
     }
 
+    @BeforeAll
+    static void setUp() {
+
+        Configuration.browser = "firefox";
+        Configuration.startMaximized = true;
+    }
+
+
     @AfterAll
     static void shouldClearAll() {
-       SqlMethods.clearTables();
+        SqlMethods.clearTables();
     }
 
     @Test
-    public void shouldSuccessfulLoginToDashboard() {
+    void shouldSuccessfulLoginToDashboard() {
         val loginPage = new LoginPage();
         val authInfo = DataHelper.getAuthInfo();
         val verificationPage = loginPage.validLogin(authInfo);
         val verificationCode = SqlMethods.getCode();
         val dashboardPage = verificationPage.validVerify(verificationCode);
-        dashboardPage.DashboardPageCheck();
+
     }
 
 }
