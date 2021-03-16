@@ -22,11 +22,9 @@ public class DashboardPageTest {
 
     @BeforeAll
     static void setUp() {
-
         Configuration.browser = "firefox";
         Configuration.startMaximized = true;
     }
-
 
     @AfterAll
     static void shouldClearAll() {
@@ -39,8 +37,18 @@ public class DashboardPageTest {
         val authInfo = DataHelper.getAuthInfo();
         val verificationPage = loginPage.validLogin(authInfo);
         val verificationCode = SqlMethods.getCode();
-        val dashboardPage = verificationPage.validVerify(verificationCode);
+        verificationPage.validVerify(verificationCode);
+    }
 
+    @Test
+    void shouldBlockIfPasswordIsInvalid() {
+        val loginPage = new LoginPage();
+        val authInfo = DataHelper.getAuthInfo();
+        val otherAuthInfo = DataHelper.getOtherAuthInfo();
+        loginPage.nonValidPassword(authInfo, otherAuthInfo);
+        loginPage.clearFieldAndPutInvalidPassword(otherAuthInfo);
+        loginPage.clearFieldAndPutInvalidPassword(otherAuthInfo);
+        loginPage.getErrorMessageAboutBlocking();
     }
 
 }
