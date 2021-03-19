@@ -3,7 +3,7 @@ plugins {
 
 }
 
-group 'ru.netology'
+group 'netology'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 11
